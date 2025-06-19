@@ -8,4 +8,3 @@ const login = () => (
 );
 
 export default login;
-// style={{textAlign: "center"}}
