@@ -1,0 +1,25 @@
+.asideSideDrawer_backdrop_wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.asideSideDrawer_wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.asideSideDrawer_wrapper div:last-child {
+    font-size: x-large;
+}
+
+@media(min-width: 768px) {
+    .asideSideDrawer_wrapper {
+        display: none;
+    }
+}
