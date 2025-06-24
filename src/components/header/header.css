@@ -60,13 +60,24 @@
         justify-content: space-around;
     }
 
-    .header_button_wrapper div {
+    /* .header_button_wrapper div {
         display: none;
         border: 1px solid;
+    } */
+
+    .header_button_btn_wrapper,
+    .header_trade_wrapper {
+        display: none;
     }
 
     .header_icon_menu {
         margin-left: 20px;
         font-size: 30px;
+    }
+}
+
+@media(min-width: 768px) {
+    .header_icon_menu {
+        display: none
     }
 }

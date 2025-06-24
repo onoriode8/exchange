@@ -1,4 +1,4 @@
-import LoginPage from '../../pages/loginPage/loginPage'
+import LoginPage from '../../../pages/authentication/loginPage/loginPage'
 
 
 const login = () => (

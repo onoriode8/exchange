@@ -1,4 +1,4 @@
-import RegisterPage from '../../pages/register/register'
+import RegisterPage from '../../../pages/authentication/register/register'
 
 
 
