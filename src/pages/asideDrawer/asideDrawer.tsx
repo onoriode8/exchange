@@ -8,9 +8,12 @@ import { IoMdLogOut, IoMdSettings } from "react-icons/io";
 
 import "./asideDrawer.css"
 
+interface AsideSideDrawerProps {
+    click: () => void
+}
 
-const AsideSideDrawer = () => (
-    <ul className="AsideSideDrawer_wrapper_">
+const AsideSideDrawer: React.FC<AsideSideDrawerProps> = ({ click }) => (
+    <ul className="AsideSideDrawer_wrapper_" onClick={click}>
         <NavLink to="/user/my/dashboard">
             <AiTwotoneDashboard style={{fontSize: "x-large"}}/>
             <div>Dashboard</div>

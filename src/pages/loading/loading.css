@@ -2,7 +2,9 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 15em;
+    /* margin-top: 15em; */
+    position: relative;
+    z-index: 5;
 }
 
 .loading_loader {

@@ -7,7 +7,6 @@ import { RiP2pFill } from "react-icons/ri";
 import './securityPage.css'
 
 
-
 const securityPage = () => (
     <div style={{display: "flex", 
         alignItems: "center", justifyContent: "space-evenly"}}>

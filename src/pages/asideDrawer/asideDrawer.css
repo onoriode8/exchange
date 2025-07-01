@@ -2,7 +2,7 @@
     background: #fff;
     box-shadow: 0 4px 8px 0 #ccc;
     width: 60%;
-    height: 100vh;
+    height: 1000vh;
     position: fixed;
     top: 0;
     left: 0;
@@ -30,7 +30,7 @@
     padding: 10px;
 }
 
-@media(min-width: 768px) {
+@media(min-width: 769px) {
     .AsideSideDrawer_wrapper_ {
         display: none;
     }

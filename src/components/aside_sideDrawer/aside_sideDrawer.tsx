@@ -14,10 +14,12 @@ const asideSideDrawer:React.FC<AsideSideDrawerProps> = (AsideSideDrawerProps) =>
         {AsideSideDrawerProps.toggleSide && <div 
             onClick={AsideSideDrawerProps.clicked}
             className="asideSideDrawer_backdrop_wrapper"></div>}
-        {AsideSideDrawerProps.toggleSide && <ASideDrawer />}
+        {AsideSideDrawerProps.toggleSide && <ASideDrawer click={AsideSideDrawerProps.clicked}/>}
         <div className="asideSideDrawer_wrapper">
             <div>Dashboard</div>
-            <div onClick={AsideSideDrawerProps.clicked}><FaAngleRight /></div>
+            {/* <div onClick={AsideSideDrawerProps.clicked}> */}
+            <FaAngleRight onClick={AsideSideDrawerProps.clicked} />
+                {/* </div> */}
         </div>
     </div>
 );
