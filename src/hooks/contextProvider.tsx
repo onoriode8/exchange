@@ -14,12 +14,34 @@ interface AccountType {
     bankNumber: number
 }
 
+interface PushUserP2POrder {
+    coin: string, //USDT, BTC ETH
+    sellerUsername: string,
+    price: number,
+    coinData: boolean, //TRUE 
+    quantity: number,
+    duration: string,
+    amountEntered: number, //AmountEntered to buy or sell
+    minimumLimit: number,
+    maximumLimit: number,
+    totalOrdersCompleted: number
+}
+
 const ContextProvider: React.FC<ContextProps> = ({ children }) => {
     // const authentication = !!localStorage.getItem("easypay")
+  // also get isAuth = true or false from res.cookies to manage page reload by user.
+
     const authentication = false
 
     const [auth] = useState<boolean>(authentication)
-    const [account, setAccount] = useState<null>(null)
+    const [account, setAccount] = useState<null | AccountType>(null)
+
+    const [p2pOrder, setP2pOrder] = useState<null | PushUserP2POrder >(null)
+
+    const pushUserP2POrderHandler = (args: PushUserP2POrder) => {
+        console.log("PUSH_ORDERS", args)
+        setP2pOrder(args)
+    }
 
     //push selected account from withdraw component.
     const pushAccountHandler = (args: AccountType) => {
@@ -33,7 +55,9 @@ const ContextProvider: React.FC<ContextProps> = ({ children }) => {
         <AuthContext.Provider value={{ 
             authenticationDataProps: auth,
             account: account,
-            pushAccount: pushAccountHandler
+            p2pOrder: p2pOrder,
+            pushAccount: pushAccountHandler,
+            pushUserP2POrder: pushUserP2POrderHandler
         }}>
             {children}
         </AuthContext.Provider>

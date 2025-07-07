@@ -10,17 +10,18 @@
     justify-content: space-evenly;
 }
 
-.currency_wrapper ul a {
+.currency_wrapper ul div {
     text-decoration: none;
     color: black;
     margin-top: 0px;
+    cursor: pointer;
     margin-right: 30px;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-.currency_wrapper ul a.active {
+/* .currency_wrapper ul a.active {
     border-bottom: 2px solid rgb(41, 41, 208);
-}
+} */
 
 .currency_wrapper select {
     display: flex;

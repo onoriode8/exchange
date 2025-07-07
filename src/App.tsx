@@ -1,10 +1,11 @@
 import React, { useContext, Suspense } from 'react'
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, useLocation } from 'react-router-dom'
 
 import Loading from './pages/loading/loading'
 import Layout from "./pages/layout/layout"
 import ContextProvider from './hooks/contextProvider'
 import AuthContext from './hooks/context'
+import BottomNav from './pages/p2p-Trading/bottomNav/bottomNav'
 
 import './App.css'
 
@@ -16,12 +17,22 @@ const Dashboard = React.lazy(() => import("./components/dashboard/dashboard"))
 const Withdraw = React.lazy(() => import("./components/withdraw/withdraw"))
 const AddPaymentMethod = React.lazy(() => import("./pages/util/paymentMethod/addpaymentmethod/addpaymentmethod"))
 const P2PTrading = React.lazy(() => import("./pages/p2p-Trading/p2p-page/p2p-page"))
-
+const BuyCoin = React.lazy(() => import("./components/purchaseCoin/buyCoin"))
 
 
 function App() {
   // const authentication = localStorage.getItem("easypay")
+  // also get isAuth = true or false from res.cookies to manage page reload by user.
   const { authenticationDataProps } = useContext(AuthContext)
+
+  const location = useLocation()
+  let showBottomNav;
+  if(location.pathname === "/user/p2p/trading" 
+    || location.pathname === "/user/profile"
+    || location.pathname === "/user/orders"
+    || location.pathname === "/user/ads") {
+      showBottomNav = <BottomNav />
+  }
 
   return (
     <ContextProvider>
@@ -38,10 +49,12 @@ function App() {
             {!authenticationDataProps && <Route path="/user/add-payment/method" element={<Suspense fallback={<Loading />}>
               <AddPaymentMethod urlPath='http://localhost:8080/addpayment/method'/></Suspense>} />}
             {!authenticationDataProps && <Route path="/user/p2p/trading" element={<Suspense fallback={<Loading />}><P2PTrading /></Suspense>} />}
-            {/* {!authenticationDataProps && <Route path="/withdraw/user" element={<Suspense fallback={<Loading />}><Withdraw /></Suspense>} />}  */}
+            {!authenticationDataProps && <Route path="/purchase/buy" element={<Suspense fallback={<Loading />}><BuyCoin /></Suspense>} />} 
+            {/* {!authenticationDataProps && <Route path="/withdraw/user" element={<Suspense fallback={<Loading />}><SellCoin /></Suspense>} />}  */}
         
         </Routes>
       </Layout>}
+      {!authenticationDataProps ? showBottomNav : null}
     </ContextProvider>
   )
 }

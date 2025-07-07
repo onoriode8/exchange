@@ -12,6 +12,7 @@
     padding-top: 10px;
     padding-bottom: 10px;
     padding-left: 0px;
+    cursor: pointer;
 }
 
 .selectMethod_wrapper_usdt_image img {
@@ -37,11 +38,11 @@
     display: flex;
     align-items: center;
     padding: 10px 50px;
+    cursor: pointer;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 .selectMethod_wrapper select:last-child {
-    /* margin-right: 100px; */
-    /* margin-left: 50px;  */
     border: none;
     outline: none;
     background: none;
@@ -54,7 +55,7 @@
         margin-top: 20px;
     }
 
-    .selectMethod_wrapper select:first-child {
+    /* .selectMethod_wrapper select:first-child { */
         /* margin-left: 30px; */
-    }
+    /* } */
 }
