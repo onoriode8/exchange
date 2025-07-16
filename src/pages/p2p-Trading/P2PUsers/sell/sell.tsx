@@ -12,7 +12,7 @@ const sell:React.FC<SellProps> = (SellProps) => {
     const uniqueUsernameOfAds = "Onoriode"
     return (
         <div>
-            <PlaceOrderList name={uniqueUsernameOfAds} 
+            <PlaceOrderList name={uniqueUsernameOfAds}
                 activity="Sell" clicked={SellProps.clicked} />
         </div>
     );

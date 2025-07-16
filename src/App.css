@@ -1,5 +1,7 @@
 body {
     margin: 0px 40px;
+    /* background: black;
+    color: #fff; */
 }
 
 @media(max-width: 768px) {

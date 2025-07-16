@@ -13,7 +13,7 @@ const buy:React.FC<BuyProps> = (BuyProps) => {
 
     return (
         <div>
-            <PlaceOrderLists name={uniqueUsernameOfAds} 
+            <PlaceOrderLists name={uniqueUsernameOfAds}
                 activity="Buy" clicked={BuyProps.clicked} />
         </div>
     );

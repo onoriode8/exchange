@@ -28,7 +28,7 @@ interface P2PUsersProps {
 
 const P2PUsers:React.FC<P2PUsersProps> = (P2PUsersProps) => (
     <div>
-        {!P2PUsersProps.toggleTrade ? <Buy buy={P2PUsersProps.buy} 
+        {!P2PUsersProps.toggleTrade ? <Buy buy={P2PUsersProps.buy}
             clicked={P2PUsersProps.clicked} 
             loading={P2PUsersProps.loading} /> :
         <Sell sell={P2PUsersProps.sell} 

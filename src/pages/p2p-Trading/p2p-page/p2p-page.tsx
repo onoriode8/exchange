@@ -27,7 +27,7 @@ const P2pTrading = () => {
     
     const navigate = useNavigate()
 
-    const { pushUserP2POrder } = useContext(AuthContext)
+    const { pushUserP2POrder, p2pOrder } = useContext(AuthContext)
 
     useEffect(() => {
         if(toggleTrade) return 
@@ -118,12 +118,23 @@ const P2pTrading = () => {
         coinData = eth
     }
 
+    let activity: string;
+    if(toggleTrade === false) {
+        console.log("inside if")
+        activity = "buy"
+    } else if(toggleTrade === true) {
+        console.log("inside else if")
+        activity = "sell"
+    }
+
     const pushOrderToPlaceOrderHandler = () => {
         console.log("COIN SELECTED", coinData, coin)
+        console.log("ACTIVITY PASS AS ARGUMENT", activity)
         if(coinData === false && coin.length < 3) return
         if(amountInput === 0) return
         console.log("Amount Entered", amountInput)
         const order = {
+            activity,
             coin: coin, //USDT, BTC ETH
             sellerUsername: "", //seller name
             price: 1540,
@@ -136,8 +147,10 @@ const P2pTrading = () => {
             totalOrdersCompleted: 50
         }
         pushUserP2POrder(order)
-        navigate("/purchase/buy")
+        navigate(`/purchase/${activity}`)
     }
+
+    console.log(p2pOrder)
 
     const arrayOfPlaceOrdersList: [] = [
         {
@@ -223,7 +236,7 @@ const P2pTrading = () => {
                     setAmountInput(Number(e.target.value))} 
                 backdropClicked={() => setToggleAmount(false)} />
             <P2PUsers loading={loading} buy={buy} sell={sell}
-                toggleTrade={toggleTrade}
+                toggleTrade={toggleTrade} 
                 placeOrdersList={arrayOfPlaceOrdersList}
                 clicked={pushOrderToPlaceOrderHandler} />
         </div>
