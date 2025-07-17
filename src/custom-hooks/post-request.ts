@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { usePaymentMethod } from './paymentmethod';
 
 
@@ -31,17 +31,24 @@ export const usePostMyAds = (username: string) => {
 
     const decrementhandler = () => {
         if(decrement < 0) return
-        setIncrement(prev => prev - 1)
+        setDecrement(prev => prev - 1)
     }
 
     const { bankName, bankAccountNumber,
             bankBranch, dummyName } = usePaymentMethod("")
+    let pay: number;
+    if(bankAccountNumber === null) {
+        pay = 0
+    } else if(typeof(bankAccountNumber) === "number") {
+        pay = bankAccountNumber
+    }
 
     const postCreatedAdsHandler = async() => {
+        console.log("CLICKED")
         if(username.length < 5) return
-        if(bankBranch.length < 3 
-            && bankAccountNumber < 10 
-            && bankName.length < 5 && dummyName.length < 7) return 
+        if(bankBranch.length < 3 && pay < 10 
+            && bankName.length < 5 
+            && dummyName.length < 7) return 
         const purchase = selectPurchase ? "Buy" : "Sell"
         const created = {
             //pass other data like the coin selected, 

@@ -1,8 +1,9 @@
 import { usePostMyAds } from "../../../custom-hooks/post-request";
 import { MdArrowDropDown } from "react-icons/md";
 import { IoIosCloseCircleOutline } from "react-icons/io";
-
+import { usePaymentMethod } from "../../../custom-hooks/paymentmethod";
 import Addpaymentmethod from "../../util/paymentMethod/addpaymentmethod/addpaymentmethod";
+import Loading from "../../loading/loading";
 
 import "./post-ads.css";
 
@@ -21,7 +22,10 @@ const PostAds:React.FC<PostAdsProps> = (props) => {
         decrementhandler,
         setFixedPrice,
         nextFunctionHandler,
-        postCreatedAdsHandler } = usePostMyAds("")
+        postCreatedAdsHandler } = usePostMyAds("");
+    const { bankName, bankAccountNumber,
+            dummyName } = usePaymentMethod("")
+
     return (
     <div>
     {!nextPage && <div className="postAds_wrapper-inner">
@@ -73,6 +77,11 @@ const PostAds:React.FC<PostAdsProps> = (props) => {
     </div>}
     {nextPage && <div className="postAds_wrapper_paymethod_wrapper">
             <Addpaymentmethod urlPath="" processPayment={false} />
+            {bankName.length < 3 || 
+                bankAccountNumber?.toFixed().length !== 10 ||
+                dummyName.length < 5 ?
+                <p style={{color: "red"}}>Please Fill all the Field Provided.</p> : null}
+                {loading && <p style={{textAlign: "center"}}>Loading ...</p>}
             <button onClick={postCreatedAdsHandler}>Confirm</button>
         </div>}
     </div>
